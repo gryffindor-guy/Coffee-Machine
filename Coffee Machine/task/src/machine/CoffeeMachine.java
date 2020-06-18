@@ -35,87 +35,185 @@ public class CoffeeMachine {
         } else {
             System.out.println("No, I can make only " + availableCups + " cup(s) of coffee");
         }
-        */
         System.out.println("The coffee machine has:\n" +
                 "400 of water\n" +
                 "540 of milk\n" +
                 "120 of coffee beans\n" +
                 "9 of disposable cups\n" +
                 "550 of money\n" +
-                "\n" +
-                "Write action (buy, fill, take):");
+                "\n");
+
+        */
+        System.out.println("Write action (buy, fill, take, remaining, exit):");
         String action = scanner.next();
         int waterStock = 400;
         int milkStock = 540;
         int beansStock = 120;
         int cupsStock = 9;
         int earnings = 550;
-        if (action.equals("fill")) {
-            System.out.println("Write how many ml of water do you want to add:");
-            int addedWater = scanner.nextInt();
-            System.out.println("Write how many ml of milk do you want to add:");
-            int addedMilk = scanner.nextInt();
-            System.out.println("Write how many grams of coffee beans do you want to add:");
-            int addedBeans = scanner.nextInt();
-            System.out.println("Write how many disposable cups of coffee do you want to add:");
-            int addedCups = scanner.nextInt();
+        while (!action.equals("exit")) {
+            if (action.equals("fill")) {
+                System.out.println();
+                System.out.println("Write how many ml of water do you want to add:");
+                int addedWater = scanner.nextInt();
+                System.out.println("Write how many ml of milk do you want to add:");
+                int addedMilk = scanner.nextInt();
+                System.out.println("Write how many grams of coffee beans do you want to add:");
+                int addedBeans = scanner.nextInt();
+                System.out.println("Write how many disposable cups of coffee do you want to add:");
+                int addedCups = scanner.nextInt();
+                System.out.println();
 
-            System.out.println("The coffee machine has:\n" +
-                    (waterStock + addedWater) + " of water\n" +
-                    (milkStock + addedMilk) + " of milk\n" +
-                    (beansStock + addedBeans) + " of coffee beans\n" +
-                    (cupsStock + addedCups) + " of disposable cups\n" +
-                    earnings + " of money");
-        } else if (action.equals("buy")) {
-            System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
-            int flavor = scanner.nextInt();
-            if (flavor == 1) {
-                waterStock -= 250;
-                beansStock -= 16;
-                earnings += 4;
-                cupsStock -= 1;
-                System.out.println("The coffee machine has:\n" +
+                waterStock += addedWater;
+                milkStock += addedMilk;
+                beansStock += addedBeans;
+                cupsStock += addedCups;
+            } else if (action.equals("buy")) {
+                System.out.println();
+                System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu::");
+                if (scanner.hasNextInt()) {
+                    int flavor = scanner.nextInt();
+                    if (flavor == 1) {
+                        waterStock -= 250;
+                        beansStock -= 16;
+                        earnings += 4;
+                        cupsStock -= 1;
+                        if (waterStock < 0) {
+                            waterStock += 250;
+                            beansStock += 16;
+                            cupsStock += 1;
+                            earnings -= 4;
+                            System.out.println("Sorry, not enough water!" +
+                                    "\n");
+                        } else if (beansStock < 0) {
+                            waterStock += 250;
+                            beansStock += 16;
+                            cupsStock += 1;
+                            earnings -= 4;
+                            System.out.println("Sorry, not enough coffee beans!" +
+                                    "\n");
+                        } else if (cupsStock < 0) {
+                            waterStock += 250;
+                            beansStock += 16;
+                            cupsStock += 1;
+                            earnings -= 4;
+                            System.out.println("Sorry, not enough disposable cups!" +
+                                    "\n");
+                        } else {
+                            System.out.println("I have enough resources, making you a coffee!" +
+                                    "\n");
+                        }
+                    } else if (flavor == 2) {
+                        waterStock -= 350;
+                        milkStock -= 75;
+                        beansStock -= 20;
+                        earnings += 7;
+                        cupsStock -= 1;
+                        if (waterStock < 0) {
+                            waterStock += 350;
+                            milkStock += 75;
+                            beansStock += 20;
+                            cupsStock += 1;
+                            earnings -= 7;
+                            System.out.println("Sorry, not enough water!" +
+                                    "\n");
+                        } else if (milkStock < 0) {
+                            waterStock += 350;
+                            milkStock += 75;
+                            beansStock += 20;
+                            cupsStock += 1;
+                            earnings -= 7;
+                            System.out.println("Sorry, not enough milk!" +
+                                    "\n");
+                        } else if (beansStock < 0) {
+                            waterStock += 350;
+                            milkStock += 75;
+                            beansStock += 20;
+                            cupsStock += 1;
+                            earnings -= 7;
+                            System.out.println("Sorry, not enough coffee beans!" +
+                                    "\n");
+                        } else if (cupsStock < 0) {
+                            waterStock += 350;
+                            milkStock += 75;
+                            beansStock += 20;
+                            cupsStock += 1;
+                            earnings -= 7;
+                            System.out.println("Sorry, not enough disposable cups!" +
+                                    "\n");
+                        } else {
+                            System.out.println("I have enough resources, making you a coffee!" +
+                                    "\n");
+                        }
+                    } else if (flavor == 3) {
+                        waterStock -= 200;
+                        milkStock -= 100;
+                        beansStock -= 12;
+                        earnings += 6;
+                        cupsStock -= 1;
+                        if (waterStock < 0) {
+                            waterStock += 200;
+                            milkStock += 100;
+                            beansStock += 12;
+                            cupsStock += 1;
+                            earnings -= 6;
+                            System.out.println("Sorry, not enough water!" +
+                                    "\n");
+                        } else if (milkStock < 0) {
+                            waterStock += 200;
+                            milkStock += 100;
+                            beansStock += 12;
+                            cupsStock += 1;
+                            earnings -= 6;
+                            System.out.println("Sorry, not enough milk!" +
+                                    "\n");
+                        } else if (beansStock < 0) {
+                            waterStock += 200;
+                            milkStock += 100;
+                            beansStock += 12;
+                            cupsStock += 1;
+                            earnings -= 6;
+                            System.out.println("Sorry, not enough coffee beans!" +
+                                    "\n");
+                        } else if (cupsStock < 0) {
+                            waterStock += 200;
+                            milkStock += 100;
+                            beansStock += 12;
+                            cupsStock += 1;
+                            earnings -= 6;
+                            System.out.println("Sorry, not enough disposable cups!" +
+                                    "\n");
+                        } else {
+                            System.out.println("I have enough resources, making you a coffee!" +
+                                    "\n");
+                        }
+                    }
+                } else {
+                    String msg = scanner.next();
+                    if (msg.equals("back")) {
+                        System.out.println("Write action (buy, fill, take, remaining, exit):");
+                        action = scanner.next();
+                        continue;
+                    }
+                }
+            } else if (action.equals("take")) {
+                System.out.println("\n" +
+                        "I gave you $" + earnings  +
+                        "\n");
+                earnings -= earnings;
+
+            } else if (action.equals("remaining")) {
+                System.out.println("\n" +
+                        "The coffee machine has:\n" +
                         waterStock + " of water\n" +
                         milkStock + " of milk\n" +
                         beansStock + " of coffee beans\n" +
                         cupsStock + " of disposable cups\n" +
-                        earnings + " of money");
-            } else if (flavor == 2) {
-                waterStock -= 350;
-                milkStock -= 75;
-                beansStock -= 20;
-                earnings += 7;
-                cupsStock -= 1;
-                System.out.println("The coffee machine has:\n" +
-                        waterStock + " of water\n" +
-                        milkStock + " of milk\n" +
-                        beansStock + " of coffee beans\n" +
-                        cupsStock + " of disposable cups\n" +
-                        earnings + " of money");
-            } else if (flavor == 3) {
-                waterStock -= 200;
-                milkStock -= 100;
-                beansStock -= 12;
-                earnings += 6;
-                cupsStock -= 1;
-                System.out.println("The coffee machine has:\n" +
-                        waterStock + " of water\n" +
-                        milkStock + " of milk\n" +
-                        beansStock + " of coffee beans\n" +
-                        cupsStock + " of disposable cups\n" +
-                        earnings + " of money");
+                        "$" + earnings + " of money" +
+                        "\n");
             }
-        } else if (action.equals("take")) {
-            System.out.println("I gave you $" + earnings + "\n" +
-                    "\n");
-            earnings -= earnings;
-            System.out.println("The coffee machine has:\n" +
-                    waterStock + " of water\n" +
-                    milkStock + " of milk\n" +
-                    beansStock + " of coffee beans\n" +
-                    cupsStock + " of disposable cups\n" +
-                    earnings + " of money");
+            System.out.println("Write action (buy, fill, take, remaining, exit):");
+            action = scanner.next();
         }
-        
     }
 }

@@ -271,6 +271,86 @@ files:
         }
     }
   learner_created: false
+- name: src/machine/CoffeeMachine.java
+  visible: true
+  text: "package machine;\nimport java.util.Scanner;\n\npublic class CoffeeMachine\
+    \ {\n    public static void main(String[] args) {\n        Scanner scanner = new\
+    \ Scanner(System.in);\n        /*\n        System.out.println(\"Starting to make\
+    \ a coffee\\n\" +\n                \"Grinding coffee beans\\n\" +\n          \
+    \      \"Boiling water\\n\" +\n                \"Mixing boiled water with crushed\
+    \ coffee beans\\n\" +\n                \"Pouring coffee into the cup\\n\" +\n\
+    \                \"Pouring some milk into the cup\\n\" +\n                \"Coffee\
+    \ is ready!\");\n        System.out.println(\"Write how many cups of coffee you\
+    \ will need:\");\n        int cups = scanner.nextInt();\n        System.out.println(\"\
+    For \" + cups + \" cups of coffee you will need:\");\n        System.out.println(cups\
+    \ * 200 + \" ml of water\");\n        System.out.println(cups * 50 + \" ml of\
+    \ milk\");\n        System.out.println(cups * 15 + \" g of coffee beans\");\n\
+    \        System.out.println(\"Write how many ml of water the coffee machine has:\"\
+    );\n        int amountOfWater = scanner.nextInt();\n        System.out.println(\"\
+    Write how many ml of milk the coffee machine has:\");\n        int amountOfMilk\
+    \ = scanner.nextInt();\n        System.out.println(\"Write how many grams of coffee\
+    \ beans the coffee machine has:\");\n        int amountOfBeans = scanner.nextInt();\n\
+    \        System.out.println(\"Write how many cups of coffee you will need:\");\n\
+    \        int requiredCups = scanner.nextInt();\n        int availableCups = Math.min(Math.min(amountOfWater\
+    \ / 200, amountOfMilk / 50), amountOfBeans / 15);\n        if (requiredCups ==\
+    \ availableCups) {\n            System.out.println(\"Yes, I can make that amount\
+    \ of coffee\");\n        } else if (requiredCups < availableCups) {\n        \
+    \    int difference =  availableCups - requiredCups;\n            System.out.println(\"\
+    Yes, I can make that amount of coffee (and even \" + difference + \" more than\
+    \ that)\");\n        } else {\n            System.out.println(\"No, I can make\
+    \ only \" + availableCups + \" cup(s) of coffee\");\n        }\n        */\n \
+    \       System.out.println(\"The coffee machine has:\\n\" +\n                \"\
+    400 of water\\n\" +\n                \"540 of milk\\n\" +\n                \"\
+    120 of coffee beans\\n\" +\n                \"9 of disposable cups\\n\" +\n  \
+    \              \"550 of money\\n\" +\n                \"\\n\" +\n            \
+    \    \"Write action (buy, fill, take):\");\n        String action = scanner.next();\n\
+    \        int waterStock = 400;\n        int milkStock = 540;\n        int beansStock\
+    \ = 120;\n        int cupsStock = 9;\n        int earnings = 550;\n        if\
+    \ (action.equals(\"fill\")) {\n            System.out.println(\"Write how many\
+    \ ml of water do you want to add:\");\n            int addedWater = scanner.nextInt();\n\
+    \            System.out.println(\"Write how many ml of milk do you want to add:\"\
+    );\n            int addedMilk = scanner.nextInt();\n            System.out.println(\"\
+    Write how many grams of coffee beans do you want to add:\");\n            int\
+    \ addedBeans = scanner.nextInt();\n            System.out.println(\"Write how\
+    \ many disposable cups of coffee do you want to add:\");\n            int addedCups\
+    \ = scanner.nextInt();\n\n            System.out.println(\"The coffee machine\
+    \ has:\\n\" +\n                    (waterStock + addedWater) + \" of water\\n\"\
+    \ +\n                    (milkStock + addedMilk) + \" of milk\\n\" +\n       \
+    \             (beansStock + addedBeans) + \" of coffee beans\\n\" +\n        \
+    \            (cupsStock + addedCups) + \" of disposable cups\\n\" +\n        \
+    \            earnings + \" of money\");\n        } else if (action.equals(\"buy\"\
+    )) {\n            System.out.println(\"What do you want to buy? 1 - espresso,\
+    \ 2 - latte, 3 - cappuccino:\");\n            int flavor = scanner.nextInt();\n\
+    \            if (flavor == 1) {\n                waterStock -= 250;\n        \
+    \        beansStock -= 16;\n                earnings += 4;\n                cupsStock\
+    \ -= 1;\n                System.out.println(\"The coffee machine has:\\n\" +\n\
+    \                        waterStock + \" of water\\n\" +\n                   \
+    \     milkStock + \" of milk\\n\" +\n                        beansStock + \" of\
+    \ coffee beans\\n\" +\n                        cupsStock + \" of disposable cups\\\
+    n\" +\n                        earnings + \" of money\");\n            } else\
+    \ if (flavor == 2) {\n                waterStock -= 350;\n                milkStock\
+    \ -= 75;\n                beansStock -= 20;\n                earnings += 7;\n\
+    \                cupsStock -= 1;\n                System.out.println(\"The coffee\
+    \ machine has:\\n\" +\n                        waterStock + \" of water\\n\" +\n\
+    \                        milkStock + \" of milk\\n\" +\n                     \
+    \   beansStock + \" of coffee beans\\n\" +\n                        cupsStock\
+    \ + \" of disposable cups\\n\" +\n                        earnings + \" of money\"\
+    );\n            } else if (flavor == 3) {\n                waterStock -= 200;\n\
+    \                milkStock -= 100;\n                beansStock -= 12;\n      \
+    \          earnings += 6;\n                cupsStock -= 1;\n                System.out.println(\"\
+    The coffee machine has:\\n\" +\n                        waterStock + \" of water\\\
+    n\" +\n                        milkStock + \" of milk\\n\" +\n               \
+    \         beansStock + \" of coffee beans\\n\" +\n                        cupsStock\
+    \ + \" of disposable cups\\n\" +\n                        earnings + \" of money\"\
+    );\n            }\n        } else if (action.equals(\"take\")) {\n           \
+    \ System.out.println(\"I gave you $\" + earnings + \"\\n\" +\n               \
+    \     \"\\n\");\n            earnings -= earnings;\n            System.out.println(\"\
+    The coffee machine has:\\n\" +\n                    waterStock + \" of water\\\
+    n\" +\n                    milkStock + \" of milk\\n\" +\n                   \
+    \ beansStock + \" of coffee beans\\n\" +\n                    cupsStock + \" of\
+    \ disposable cups\\n\" +\n                    earnings + \" of money\");\n   \
+    \     }\n        \n    }\n}\n"
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/33/stages/179/implement
-status: Unchecked
+status: Solved
 record: -1
